@@ -1,10 +1,109 @@
+int main()
+{
 
-showwhowin(you, computer);
+	int who, i;
 
-printf("\n");
+	computer.total = 0;
+	you.total = 0;
+	you2.total = 0;
 
-again();
-break;
+	computer.name = 'c';
+	you.name = 'y';
+	you2.name = 'q';
+
+
+	for (i = 0; i < 6; i++)
+	{
+		computer.tims[i] = 0;
+		you.tims[i] = 0;
+		you2.tims[i] = 0;
+	}
+
+	printf("é–‹å§‹éŠæˆ² è¦èˆ‡èª°ç©\n");
+	printf("1 èˆ‡é›»è…¦ç© 2å…©å€‹äººç© 0é€€å‡ºéŠæˆ²\n");
+	scanf_s("%d", &who);
+	srand(time(NULL));
+
+	do
+	{
+		switch (who)
+		{
+		case 1:
+			i = 0;
+			getcard(computer, i);
+			getcard(you, i);
+
+			printf("D = 10\n");
+			printf("é›»è…¦çš„ç‰Œ : X  \n");
+			printf("ä½ çš„ç‰Œ :   %c \n", face[you.tims[0] - 1]);
+
+			addcard();
+
+			i = 1;
+			while (ans == 1)
+			{
+				getcard(you, i);
+
+				printf("\nä½ çš„ç‰Œ : %c \n", face[you.tims[i] - 1]);
+				i++;
+
+				if (you.total <= 10.5 && you.tims[4] != 0)
+				{
+					show(you);
+					printf("ä½ éäº”é—œ\n=====You Win=====\n");
+					again();
+				}
+				if (you.total > 10.5)
+				{
+					show(you);
+					printf("\n*****Computer Win*****\n");
+					again();
+				}
+
+				addcard();
+			}
+
+
+			printf("è¼ªåˆ°é›»è…¦\n");
+
+
+			if (computer.total < 10)
+			{
+				i = 1;
+
+				while (computer.total < 8)
+				{
+					getcard(computer, i);
+
+					printf("\né›»è…¦çš„ç‰Œ : %c \n", face[computer.tims[i] - 1]);
+					i++;
+
+					if (computer.total <= 10.5 && computer.tims[4] != 0)
+					{
+						show(computer);
+						printf("é›»è…¦éäº”é—œ \n*****Computer Win*****\n");
+						again();
+					}
+					if (computer.total > 10.5)
+					{
+						show(computer);
+						printf("\n=====You Win=====\n");
+						again();
+					}
+				}
+			}
+
+			printf("\næ”¤ç‰Œ\n\n");
+
+			show(computer);
+			show(you);
+
+			showwhowin(you, computer);
+
+			printf("\n");
+
+			again();
+			break;
 
 		case 2:
 			i = 0;
@@ -12,7 +111,7 @@ break;
 
 
 			printf("D = 10\n");
-			printf("ª±®a1ªºµP :    %c  \n", face[you.tims[0] - 1]);
+			printf("ç©å®¶1çš„ç‰Œ :    %c  \n", face[you.tims[0] - 1]);
 
 
 			addcard();
@@ -23,20 +122,20 @@ break;
 			{
 				getcard(you, i);
 
-				printf("\n§AªºµP : %c \n", face[you.tims[i] - 1]);
+				printf("\nä½ çš„ç‰Œ : %c \n", face[you.tims[i] - 1]);
 				i++;
 
 
 				if (you.total <= 10.5 && you.tims[5] != 0)
 				{
 					show(you);
-					printf("§A¹L¤­Ãö\n=====ª±®a1 Win=====\n");
+					printf("ä½ éäº”é—œ\n=====ç©å®¶1 Win=====\n");
 					again();
 				}
 				if (you.total > 10.5)
 				{
 					show(you);
-					printf("\n*****ª±®a2 Win*****\n");
+					printf("\n*****ç©å®¶2 Win*****\n");
 					again();
 				}
 
@@ -45,13 +144,13 @@ break;
 
 			system("cls");
 			//=======================================================
-			printf("½ü¨ìª±®a2\n");
+			printf("è¼ªåˆ°ç©å®¶2\n");
 			i = 0;
 			getcard(you2, i);
 
 
 			printf("D = 10\n");
-			printf("ª±®a2ªºµP :    %c  \n", face[you2.tims[0] - 1]);
+			printf("ç©å®¶2çš„ç‰Œ :    %c  \n", face[you2.tims[0] - 1]);
 
 			addcard();
 
@@ -61,27 +160,27 @@ break;
 			{
 				getcard(you2, i);
 
-				printf("\n§AªºµP : %c \n", face[you2.tims[i] - 1]);
+				printf("\nä½ çš„ç‰Œ : %c \n", face[you2.tims[i] - 1]);
 				i++;
 
 
 				if (you2.total <= 10.5 && you2.tims[5] != 0)
 				{
 					show(you2);
-					printf("§A¹L¤­Ãö\n=====ª±®a2 Win=====\n");
+					printf("ä½ éäº”é—œ\n=====ç©å®¶2 Win=====\n");
 					again();
 				}
 				if (you2.total > 10.5)
 				{
 					show(you2);
-					printf("\n*****ª±®a1 Win*****\n");
+					printf("\n*****ç©å®¶1 Win*****\n");
 					again();
 				}
 
 				addcard();
 			}
 
-			printf("\nÅuµP\n\n");
+			printf("\næ”¤ç‰Œ\n\n");
 
 			show(you);
 			show(you2);
@@ -98,8 +197,8 @@ break;
 
 		default:
 
-			puts("¿é¤J¿ù»~¡A¦A¿é¤J¤@¦¸");
-			printf("1 »P¹q¸£ª± 2¨â­Ó¤Hª± 0°h¥X¹CÀ¸\n");
+			puts("è¼¸å…¥éŒ¯èª¤ï¼Œå†è¼¸å…¥ä¸€æ¬¡");
+			printf("1 èˆ‡é›»è…¦ç© 2å…©å€‹äººç© 0é€€å‡ºéŠæˆ²\n");
 			scanf_s("%d", &who);
 			break;
 		}
